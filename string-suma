@@ -1,0 +1,33 @@
+
+caracteres = input ("Ingrese la cadena de string: ")
+
+
+def cadenastring (cadena):
+    numero_pasado = 0
+    conteo_pregunta = 0
+    numero_presente = 0
+    num_numeros = 0
+    condiciones_cumplidas = 0
+    for i in range (len(cadena)):
+        if cadena[i].isdigit():
+            numero_pasado = int (numero_presente)
+            numero_presente = int (cadena[i])
+            num_numeros += 1
+            
+            if numero_pasado + numero_presente == 10 and conteo_pregunta == 3 :
+                conteo_pregunta  = 0
+                condiciones_cumplidas += 1
+                #return True
+                
+            
+        elif cadena[i] == "?":
+            conteo_pregunta += 1
+    
+    
+    if condiciones_cumplidas == num_numeros - 1 :
+        return True
+    else:
+        return False
+
+print('Cumple: %s' % ( 'SI' if cadenastring(caracteres) else 'No'))
+
