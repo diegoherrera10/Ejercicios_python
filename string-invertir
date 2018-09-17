@@ -1,0 +1,12 @@
+texto = input("Ingrese la cadena de caracteres: ")
+cadena = list(texto)
+texto_aux = []
+mag = len(cadena)
+mag -= 1
+for i in range(len(cadena)) :
+    if cadena[i].isalpha() and cadena[mag-i].isalpha() :
+        texto_aux.insert(i,cadena[mag-i])
+    else :
+        texto_aux.insert(i,cadena[i])
+
+print(texto_aux)      
