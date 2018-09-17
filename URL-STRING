@@ -1,0 +1,35 @@
+import socket
+import requests
+
+def paginaweb(url="www.google.com"):
+    lista=[]
+    print ("la pagina que deseas info es: "+url)
+    lista.append("la pagina que deseas info es: "+url+"\n")
+    direccion = socket.gethostbyname(url)
+    print ("la direccion IP es: "+direccion)
+    lista.append("la direccion IP es: "+direccion+"\n")
+       
+    info = requests.get("http://"+url)
+    if "Server" in info.headers:
+        print ("El server es: "+info.headers["Server"])
+        lista.append("El host es: "+info.headers["Server"]+"\n")
+    else:
+        print ("El server es desconocido")
+        lista.append("El server es desconocido"+"\n")
+    if "Content-Encoding" in info.headers:
+        print ("La codificacion del contenido es : "+info.headers["Content-Encoding"])
+        lista.append("La codificacion del contenido es : "+info.headers["Content-Encoding"]+"\n")
+    else:
+        print ("El contenido de codificacion es desconocido")
+        lista.append("El contenido de codificacion es desconocido"+"\n")
+    if "Content-Type" in info.headers:
+        print ("El tipo de codificacion es: "+info.headers["Content-Type"])
+        lista.append("El tipo de codificacion es: "+info.headers["Content-Type"]+"\n")
+    else:
+        print ("El tipo de codificacion es desconocido")
+        lista.append("El tipo de codificacion es desconocido"+"\n")          
+
+    archivo = open("E:\Maestría\Programacion cientifica\informacion.txt", "w+")
+    archivo.writelines(lista) 
+    archivo.close()
+paginaweb()    
